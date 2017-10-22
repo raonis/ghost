@@ -1,0 +1,32 @@
+version: '3.2'
+
+services:
+
+  nginx:
+    container_name: nginx_proxy
+    image: raonis/ghost
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - ghost
+    restart: always
+
+  ghost:
+    image: ghost:1-alpine
+    restart: always
+    expose:
+      - "2368"
+    environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: example
+      database__connection__database: ghost
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
