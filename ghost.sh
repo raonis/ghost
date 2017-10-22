@@ -1,7 +1,7 @@
 # /bin/bash
 #
-#
-#
+# Raoni Sortica
+# raoni@raoni.adm.br
 #
 #
 DATABASE=ghost
